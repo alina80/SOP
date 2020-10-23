@@ -65,9 +65,9 @@ return [
             'deleted_at_helper'        => '',
         ],
     ],
-    'country'        => [
-        'title'          => 'Countries',
-        'title_singular' => 'Country',
+    'department'        => [
+        'title'          => 'Departments',
+        'title_singular' => 'Department',
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => '',
@@ -83,16 +83,16 @@ return [
             'deleted_at_helper' => '',
         ],
     ],
-    'city'           => [
-        'title'          => 'Cities',
-        'title_singular' => 'City',
+    'status'        => [
+        'title'          => 'Statuses',
+        'title_singular' => 'Status',
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => '',
             'name'              => 'Name',
             'name_helper'       => '',
-            'country'           => 'Country',
-            'country_helper'    => '',
+            'short_code'        => 'Short Code',
+            'short_code_helper' => '',
             'created_at'        => 'Created at',
             'created_at_helper' => '',
             'updated_at'        => 'Updated at',
@@ -101,30 +101,5 @@ return [
             'deleted_at_helper' => '',
         ],
     ],
-    'trip'           => [
-        'title'          => 'Trips',
-        'title_singular' => 'Trip',
-        'fields'         => [
-            'id'                => 'ID',
-            'id_helper'         => '',
-            'city_from'         => 'City From',
-            'city_from_helper'  => '',
-            'date_from'         => 'Date From',
-            'date_from_helper'  => '',
-            'city_to'           => 'City To',
-            'city_to_helper'    => '',
-            'date_to'           => 'Date To',
-            'date_to_helper'    => '',
-            'adults'            => 'Adults',
-            'adults_helper'     => '',
-            'children'          => 'Children',
-            'children_helper'   => '',
-            'created_at'        => 'Created at',
-            'created_at_helper' => '',
-            'updated_at'        => 'Updated at',
-            'updated_at_helper' => '',
-            'deleted_at'        => 'Deleted at',
-            'deleted_at_helper' => '',
-        ],
-    ],
+
 ];

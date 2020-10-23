@@ -35,6 +35,14 @@ Route::group([
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
     Route::resource('users', 'UsersController');
 
+    // Departments
+    Route::delete('departments/destroy', 'DepartmentsController@massDestroy')->name('departments.massDestroy');
+    Route::resource('departments', 'DepartmentsController');
+
+    // Statuses
+    Route::delete('statuses/destroy', 'StatusesController@massDestroy')->name('statuses.massDestroy');
+    Route::resource('statuses', 'StatusesController');
+
 });
 
 Route::group([
