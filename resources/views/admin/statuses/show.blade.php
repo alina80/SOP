@@ -25,7 +25,7 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.status.fields.title') }}
+                            {{ trans('cruds.status.fields.name') }}
                         </th>
                         <td>
                             {{ $status->title }}

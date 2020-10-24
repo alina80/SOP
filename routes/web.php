@@ -43,6 +43,19 @@ Route::group([
     Route::delete('statuses/destroy', 'StatusesController@massDestroy')->name('statuses.massDestroy');
     Route::resource('statuses', 'StatusesController');
 
+    // Services
+    Route::delete('services/destroy', 'ServicesController@massDestroy')->name('services.massDestroy');
+    Route::resource('services', 'ServicesController');
+
+});
+
+Route::group([
+    'prefix' => 'employee',
+    'as' => 'employee.',
+    'namespace' => 'Employee',
+    'middleware' => ['auth', 'employee']
+], function () {
+    Route::get('/', 'HomeController@index')->name('home');
 });
 
 Route::group([
@@ -53,6 +66,8 @@ Route::group([
 ], function () {
     Route::get('/', 'HomeController@index')->name('home');
 });
+
+
 
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
 // Change password

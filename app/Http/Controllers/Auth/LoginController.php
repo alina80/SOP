@@ -44,6 +44,10 @@ class LoginController extends Controller
             return route('admin.home');
         }
 
+        if (auth()->user()->is_employee) {
+            return route('employee.home');
+        }
+
         return route('user.home');
     }
 }

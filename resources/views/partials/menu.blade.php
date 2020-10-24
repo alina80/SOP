@@ -3,11 +3,16 @@
 
         <ul class="nav">
             <li class="nav-item">
-                <a href="{{ route("admin.home") }}" class="nav-link">
+                <a href="@if(auth()->user()->is_admin)
+                            {{ route("admin.home") }}
+                         @else
+                            {{ route('employee.home') }}
+                @endif
+                    " class="nav-link">
                     <i class="nav-icon fas fa-fw fa-tachometer-alt">
 
                     </i>
-                    {{ trans('global.dashboard') }}
+                    {{ trans('global.dashboard') }} {{ auth()->user()->name }}
                 </a>
             </li>
             @can('user_management_access')
@@ -59,6 +64,26 @@
                         <i class="fa-fw fas fa-building nav-icon">
                         </i>
                         {{ trans('cruds.department.title') }}
+                    </a>
+                </li>
+            @endcan
+
+            @can('service_access')
+                <li class="nav-item">
+                    <a href="{{ route('admin.services.index') }}" class="nav-link {{ request()->is('admin/services') || request()->is('admin/services/*') ? 'active' : '' }}">
+                        <i class="fa-fw fas fa-wrench nav-icon">
+                        </i>
+                        {{ trans('cruds.service.title') }}
+                    </a>
+                </li>
+            @endcan
+
+            @can('employee_access')
+                <li class="nav-item">
+                    <a href="#{{--{{ route('admin.employees.index') }}--}}" class="nav-link {{ request()->is('admin/employees') || request()->is('admin/employees/*') ? 'active' : '' }}">
+                        <i class="fa-fw fas fa-briefcase nav-icon">
+                        </i>
+                        {{ trans('cruds.employee.title') }}
                     </a>
                 </li>
             @endcan
