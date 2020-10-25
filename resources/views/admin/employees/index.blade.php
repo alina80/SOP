@@ -1,76 +1,73 @@
 @extends('layouts.admin')
 @section('content')
-@can('department_create')
+@can('employee_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.departments.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.department.title_singular') }}
+            <a class="btn btn-success" href="{{ route('admin.employees.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.employee.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.department.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.employee.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-Department">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-Employee">
                 <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
-                            {{ trans('cruds.department.fields.id') }}
+                            {{ trans('cruds.employee.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.department.fields.name') }}
+                            {{ trans('cruds.employee.fields.user_id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.department.fields.services') }}
+                            {{ trans('cruds.employee.fields.user') }}
                         </th>
+
                         <th>
                             &nbsp;
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($departments as $key => $department)
-                        <tr data-entry-id="{{ $department->id }}">
+                    @foreach($employees as $key => $employee)
+                        <tr data-entry-id="{{ $employee->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $department->id ?? '' }}
+                                {{ $employee->id ?? '' }}
                             </td>
                             <td>
-                                {{ $department->title ?? '' }}
+                                {{ $employee->user_id ?? '' }}
                             </td>
                             <td>
-                                @foreach($department->services as $key => $item)
-                                    <a href="{{ route('admin.services.edit',$item) }}">
-                                        <span class="badge badge-info">{{ $item->title }}</span>
-                                    </a>
+                                {{ $employee->user->name ?? '' }}
+                            </td>
 
-                                @endforeach
-                            </td>
                             <td>
-                                @can('department_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.departments.show', $department->id) }}">
+                                @can('employee_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.employees.show', $employee->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
-                                @can('department_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.departments.edit', $department->id) }}">
+                                @can('employee_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.employees.edit', $employee->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
 
-                                @can('department_delete')
-                                    <form action="{{ route('admin.departments.destroy', $department->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                @can('employee_delete')
+                                    <form action="{{ route('admin.employees.destroy', $employee->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -95,11 +92,11 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('department_delete')
+@can('employee_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.departments.massDestroy') }}",
+    url: "{{ route('admin.employees.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -130,7 +127,7 @@
     order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
-  let table = $('.datatable-Department:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  let table = $('.datatable-Employee:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();

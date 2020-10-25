@@ -20,6 +20,13 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.permission.fields.title_helper') }}</span>
             </div>
+
+            <div class="form-group">
+                <a class="btn btn-info" href="{{ route('admin.permissions.index') }}">
+                    {{ trans('global.back_to_list') }}
+                </a>
+            </div>
+
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}

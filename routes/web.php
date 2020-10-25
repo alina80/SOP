@@ -47,6 +47,12 @@ Route::group([
     Route::delete('services/destroy', 'ServicesController@massDestroy')->name('services.massDestroy');
     Route::resource('services', 'ServicesController');
 
+    // Employees
+    Route::delete('employees/destroy', 'EmployeesController@massDestroy')->name('employees.massDestroy');
+    Route::resource('employees', 'EmployeesController');
+
+    Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
+
 });
 
 Route::group([

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyDepartmentRequest;
 use App\Http\Requests\StoreDepartmentRequest;
 use App\Http\Requests\UpdateDepartmentRequest;
+use App\Service;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Gate;
@@ -75,7 +76,11 @@ class DepartmentsController extends Controller
     {
         abort_if(Gate::denies('department_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.departments.edit', compact('department'));
+        $services = Service::all()->pluck('title', 'id');
+
+        $department->load('services');
+
+        return view('admin.departments.edit', compact('department','services'));
     }
 
     /**

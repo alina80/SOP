@@ -6,11 +6,11 @@ use DateTimeInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Department extends Model
+class Employee extends Model
 {
     use SoftDeletes;
 
-    public $table = 'departments';
+    protected $table = 'employees';
 
     protected $dates = [
         'created_at',
@@ -19,7 +19,7 @@ class Department extends Model
     ];
 
     protected $fillable = [
-        'title',
+        'user_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -30,13 +30,18 @@ class Department extends Model
         return $date->format('Y-m-d H:i:s');
     }
 
-    public function services()
+    public function departments()
     {
-        return $this->hasMany(Service::class);
+        return $this->hasMany(Department::class);
     }
 
-    public function employees()
+    public function getUserName()
     {
-        return $this->hasMany(Employee::class);
+        return User::where('id', $this->user_id)->first()->name;
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

@@ -49,6 +49,12 @@
             </div>
 
             <div class="form-group">
+                <a class="btn btn-info" href="{{ route('admin.services.index') }}">
+                    {{ trans('global.back_to_list') }}
+                </a>
+            </div>
+
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

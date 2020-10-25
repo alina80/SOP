@@ -9,6 +9,7 @@
     <div class="card-body">
         <form method="POST" action="{{ route("admin.roles.store") }}" enctype="multipart/form-data">
             @csrf
+
             <div class="form-group">
                 <label class="required" for="title">{{ trans('cruds.role.fields.title') }}</label>
                 <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', '') }}" required>
@@ -19,6 +20,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.role.fields.title_helper') }}</span>
             </div>
+
             <div class="form-group">
                 <label class="required" for="permissions">{{ trans('cruds.role.fields.permissions') }}</label>
                 <div style="padding-bottom: 4px">
@@ -37,6 +39,13 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.role.fields.permissions_helper') }}</span>
             </div>
+
+            <div class="form-group">
+                <a class="btn btn-info" href="{{ route('admin.roles.index') }}">
+                    {{ trans('global.back_to_list') }}
+                </a>
+            </div>
+
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}

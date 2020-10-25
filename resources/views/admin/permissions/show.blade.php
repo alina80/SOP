@@ -8,11 +8,7 @@
 
     <div class="card-body">
         <div class="form-group">
-            <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.permissions.index') }}">
-                    {{ trans('global.back_to_list') }}
-                </a>
-            </div>
+
             <table class="table table-bordered table-striped">
                 <tbody>
                     <tr>
@@ -33,8 +29,9 @@
                     </tr>
                 </tbody>
             </table>
+
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.permissions.index') }}">
+                <a class="btn btn-info" href="{{ route('admin.permissions.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>

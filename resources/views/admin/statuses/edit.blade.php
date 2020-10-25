@@ -11,15 +11,22 @@
             @method('PUT')
             @csrf
             <div class="form-group">
-                <label class="required" for="title">{{ trans('cruds.status.fields.title') }}</label>
-                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', $department->title) }}" required>
+                <label class="required" for="title">{{ trans('cruds.status.fields.name') }}</label>
+                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', $status->title) }}" required>
                 @if($errors->has('title'))
                     <div class="invalid-feedback">
                         {{ $errors->first('title') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.status.fields.title_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.status.fields.name_helper') }}</span>
             </div>
+
+            <div class="form-group">
+                <a class="btn btn-info" href="{{ route('admin.statuses.index') }}">
+                    {{ trans('global.back_to_list') }}
+                </a>
+            </div>
+
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}

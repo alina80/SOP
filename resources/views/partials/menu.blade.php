@@ -80,7 +80,7 @@
 
             @can('employee_access')
                 <li class="nav-item">
-                    <a href="#{{--{{ route('admin.employees.index') }}--}}" class="nav-link {{ request()->is('admin/employees') || request()->is('admin/employees/*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.employees.index') }}" class="nav-link {{ request()->is('admin/employees') || request()->is('admin/employees/*') ? 'active' : '' }}">
                         <i class="fa-fw fas fa-briefcase nav-icon">
                         </i>
                         {{ trans('cruds.employee.title') }}
@@ -97,6 +97,15 @@
                     </a>
                 </li>
             @endcan
+
+            <li class="nav-item">
+                <a href="{{ route("admin.systemCalendar") }}" class="nav-link {{ request()->is('admin/system-calendar') || request()->is('admin/system-calendar/*') ? 'active' : '' }}">
+                    <i class="nav-icon fa-fw fas fa-calendar">
+
+                    </i>
+                    {{ trans('global.systemCalendar') }}
+                </a>
+            </li>
 
             @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
                 @can('profile_password_edit')

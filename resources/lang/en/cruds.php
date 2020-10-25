@@ -73,6 +73,8 @@ return [
             'id_helper'         => '',
             'name'              => 'Name',
             'name_helper'       => '',
+            'services'          => 'Services',
+            'services_helper'   => '',
             'short_code'        => 'Short Code',
             'short_code_helper' => '',
             'created_at'        => 'Created at',
@@ -111,6 +113,12 @@ return [
             'name_helper'              => '',
             'email'                    => 'Email',
             'email_helper'             => '',
+            'user'                     => 'User Name',
+            'user_helper'              => '',
+            'user_id'                  => 'User_id',
+            'user_id_helper'           => '',
+            'department'               => 'Department',
+            'department_helper'        => '',
             'email_verified_at'        => 'Email verified at',
             'email_verified_at_helper' => '',
             'password'                 => 'Password',
@@ -146,5 +154,6 @@ return [
             'deleted_at_helper' => '',
         ],
     ],
+
 
 ];

@@ -5,9 +5,9 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 use Gate;
-use App\Status;
+use App\Employee;
 
-class MassDestroyStatusRequest extends FormRequest
+class MassDestroyEmployeeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -16,7 +16,7 @@ class MassDestroyStatusRequest extends FormRequest
      */
     public function authorize()
     {
-        abort_if(Gate::denies('status_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('service_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return true;
     }
@@ -30,7 +30,7 @@ class MassDestroyStatusRequest extends FormRequest
     {
         return [
             'ids'   => 'required|array',
-            'ids.*' => 'exists:statuses,id',
+            'ids.*' => 'exists:employees,id',
         ];
     }
 }
