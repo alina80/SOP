@@ -36,4 +36,9 @@ class Service extends Model
     {
         return $this->belongsTo('App\Department');
     }
+
+    public function appointments()
+    {
+        return $this->belongsToMany(Appointment::class);
+    }
 }

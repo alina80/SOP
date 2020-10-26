@@ -51,6 +51,10 @@ Route::group([
     Route::delete('employees/destroy', 'EmployeesController@massDestroy')->name('employees.massDestroy');
     Route::resource('employees', 'EmployeesController');
 
+    // Appointments
+    Route::delete('appointments/destroy', 'AppointmentsController@massDestroy')->name('appointments.massDestroy');
+    Route::resource('appointments', 'AppointmentsController');
+
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
 
 });
@@ -62,6 +66,12 @@ Route::group([
     'middleware' => ['auth', 'employee']
 ], function () {
     Route::get('/', 'HomeController@index')->name('home');
+
+    // Appointments
+    Route::delete('appointments/destroy', 'AppointmentsController@massDestroy')->name('appointments.massDestroy');
+    Route::resource('appointments', 'AppointmentsController');
+
+    Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
 });
 
 Route::group([

@@ -106,12 +106,3 @@ table.dataTable thead .sorting_desc {
     padding-left: 0px;
     padding-right: 0px;
 }
-
-.form-group .required::after {
-    content: " *";
-    color: red;
-}
-
-.form-check.is-invalid ~ .invalid-feedback {
-    display: block;
-}

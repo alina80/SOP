@@ -98,14 +98,37 @@
                 </li>
             @endcan
 
-            <li class="nav-item">
-                <a href="{{ route("admin.systemCalendar") }}" class="nav-link {{ request()->is('admin/system-calendar') || request()->is('admin/system-calendar/*') ? 'active' : '' }}">
-                    <i class="nav-icon fa-fw fas fa-calendar">
+            @can('appointment_access')
+                <li class="nav-item">
+                    <a href="@if(auth()->user()->is_admin)
+                                    {{ route("admin.appointments.index") }}
+                             @else
+                                    {{ route('employee.appointments.index') }}
+                             @endif"
+                       class="nav-link {{ request()->is('admin/appointments') || request()->is('admin/appointments/*') ? 'active' : '' }}">
+                        <i class="fa-fw fas fa-cogs nav-icon">
 
-                    </i>
-                    {{ trans('global.systemCalendar') }}
-                </a>
-            </li>
+                        </i>
+                        {{ trans('cruds.appointment.title') }}
+                    </a>
+                </li>
+            @endcan
+
+            @can('calendar_access')
+                <li class="nav-item">
+                    <a href="@if(auth()->user()->is_admin)
+                    {{ route("admin.systemCalendar") }}
+                    @else
+                    {{ route('employee.systemCalendar') }}
+                    @endif"
+                       class="nav-link {{ request()->is('admin/system-calendar') || request()->is('admin/system-calendar/*') ? 'active' : '' }}">
+                        <i class="nav-icon fa-fw fas fa-calendar">
+
+                        </i>
+                        {{ trans('global.systemCalendar') }}
+                    </a>
+                </li>
+            @endcan
 
             @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
                 @can('profile_password_edit')
