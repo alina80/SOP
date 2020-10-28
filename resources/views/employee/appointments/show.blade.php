@@ -28,14 +28,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.appointment.fields.employee') }}
-                        </th>
-                        <td>
-                            {{ $appointment->employee->user->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.appointment.fields.start_time') }}
                         </th>
                         <td>
@@ -55,7 +47,7 @@
                             {{ trans('cruds.appointment.fields.price') }}
                         </th>
                         <td>
-                            ${{ $appointment->price }}
+                            {{ $appointment->price }}
                         </td>
                     </tr>
                     <tr>
@@ -74,6 +66,14 @@
                             @foreach($appointment->services as $service)
                                 <span class="label label-info label-many">{{ $service->title }}</span><br>
                             @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.appointment.fields.status') }}
+                        </th>
+                        <td style="background-color: {{ $appointment->status->color }}">
+                            <span class="label label-info label-many">{{ $appointment->status->title }}</span>
                         </td>
                     </tr>
                 </tbody>

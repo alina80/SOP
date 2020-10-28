@@ -24,6 +24,7 @@ class SystemCalendarController extends Controller
                 'start' => $appointment->start_time,
                 'finish' => $appointment->finish_time,
                 'color' => $appointment->status->color,
+                'duration' => date_diff(date_create($appointment->start_time),date_create($appointment->finish_time))->format('HH:ii:ss'),
                 'url'   => route('admin.appointments.edit', $appointment->id),
             ];
         }

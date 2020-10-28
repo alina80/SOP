@@ -7,7 +7,7 @@
     </div>
 
     <div class="card-body">
-        <form action="{{ route("admin.appointments.store") }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route("employee.appointments.store") }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="form-group {{ $errors->has('client') ? 'has-error' : '' }}">
@@ -23,13 +23,9 @@
                 </p>
             </div>
 
-            <div class="form-group {{ $errors->has('employee_id') ? 'has-error' : '' }}">
+            <div class="form-group {{ $errors->has('employee_id') ? 'has-error' : '' }}" style="display: none">
                 <label for="employee">{{ trans('cruds.appointment.fields.employee') }}</label>
-                <select name="employee_id" id="employee" class="form-control select2">
-                    @foreach($employees as $id => $employee)
-                        <option value="{{ $id }}">{{ $employee }}</option>
-                    @endforeach
-                </select>
+                <input name="employee_id" value="{{ $employeeId }}">
                 @if($errors->has('employee_id'))
                     <em class="invalid-feedback">
                         {{ $errors->first('employee_id') }}
@@ -120,7 +116,7 @@
             </div>
 
             <div class="form-group">
-                <a class="btn btn-info" href="{{ route('admin.appointments.index') }}">
+                <a class="btn btn-info" href="{{ route('employee.appointments.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>

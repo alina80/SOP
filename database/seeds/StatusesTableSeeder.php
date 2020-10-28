@@ -33,6 +33,13 @@ class StatusesTableSeeder extends Seeder
                 'color' => '#b22222',
                 'created_at' => now(),
                 'updated_at' => now(),
+            ],
+            [
+                'id' => '4',
+                'title' => 'Expired',
+                'color' => '#808080',
+                'created_at' => now(),
+                'updated_at' => now(),
             ]
         ];
 

@@ -97,8 +97,6 @@ class AppointmentsController extends Controller
     {
         abort_if(Gate::denies('appointment_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-       // $clients = Client::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
         $employees = Employee::all()->pluck('user.name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $services = Service::all()->pluck('title', 'id');

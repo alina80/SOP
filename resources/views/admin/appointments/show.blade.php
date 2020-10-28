@@ -76,6 +76,14 @@
                             @endforeach
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.appointment.fields.status') }}
+                        </th>
+                        <td style="background-color: {{ $appointment->status->color }}">
+                            <span class="label label-info label-many">{{ $appointment->status->title }}</span>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <a style="margin-top:20px;" class="btn btn-info" href="{{ url()->previous() }}">

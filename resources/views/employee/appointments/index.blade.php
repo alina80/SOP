@@ -3,7 +3,7 @@
 @can('appointment_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route("admin.appointments.create") }}">
+            <a class="btn btn-success" href="{{ route("employee.appointments.create") }}">
                 {{ trans('global.add') }} {{ trans('cruds.appointment.title_singular') }}
             </a>
         </div>
@@ -27,9 +27,7 @@
                     <th>
                         {{ trans('cruds.appointment.fields.client') }}
                     </th>
-                    <th>
-                        {{ trans('cruds.appointment.fields.employee') }}
-                    </th>
+
                     <th>
                         {{ trans('cruds.appointment.fields.start_time') }}
                     </th>
@@ -105,7 +103,7 @@
         { data: 'placeholder', name: 'placeholder' },
         { data: 'id', name: 'id' },
         { data: 'client', name: 'client' },
-        { data: 'employee_id', name: 'employee.user_id.name' },
+        //{ data: 'employee_id', name: 'employee.user_id.name' },
         { data: 'start_time', name: 'start_time' },
         { data: 'finish_time', name: 'finish_time' },
         { data: 'price', name: 'price' },

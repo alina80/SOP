@@ -4,6 +4,7 @@ namespace App\Rules;
 
 use App\Appointment;
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Facades\App;
 
 class AppointmentOverlap implements Rule
 {
@@ -26,7 +27,10 @@ class AppointmentOverlap implements Rule
      */
     public function passes($attribute, $value)
     {
-        return Appointment::where('start_time','<=', $value)->where('finish_time','>=', $value)->where('employee_id',$value)->count() == 0;
+        if (!Appointment::where('employee_id',$value)->count() == 0){
+
+            return Appointment::where('start_time','<=', $value)->where('finish_time','>=', $value)->count() == 0;
+        }
     }
 
     /**

@@ -5,9 +5,15 @@ namespace App\Http\Controllers\Employee;
 use App\Appointment;
 use App\Employee;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreAppointmentRequest;
+use App\Http\Requests\UpdateAppointmentRequest;
+use App\Service;
+use App\Status;
 use App\User;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
+use Gate;
 
 class AppointmentsController extends Controller
 {
@@ -91,7 +97,13 @@ class AppointmentsController extends Controller
      */
     public function create()
     {
-        //
+        abort_if(Gate::denies('appointment_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $employeeId = auth()->user()->getEmployeeId();
+
+        $services = Service::all()->pluck('title', 'id');
+
+        return view('employee.appointments.create', compact('employeeId', 'services'));
     }
 
     /**
@@ -100,9 +112,12 @@ class AppointmentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAppointmentRequest $request)
     {
-        //
+        $appointment = Appointment::create($request->all());
+        $appointment->services()->sync($request->input('services', []));
+
+        return redirect()->route('employee.appointments.index');
     }
 
     /**
@@ -113,7 +128,11 @@ class AppointmentsController extends Controller
      */
     public function show(Appointment $appointment)
     {
-        //
+        abort_if(Gate::denies('appointment_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $appointment->load('employee', 'services', 'status');
+
+        return view('employee.appointments.show', compact('appointment'));
     }
 
     /**
@@ -124,19 +143,32 @@ class AppointmentsController extends Controller
      */
     public function edit(Appointment $appointment)
     {
-        //
+        abort_if(Gate::denies('appointment_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $statuses = Status::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $employeeId = auth()->user()->getEmployeeId();
+
+        $services = Service::all()->pluck('title', 'id');
+
+        $appointment->load('employee', 'services', 'status');
+
+        return view('employee.appointments.edit', compact('employeeId', 'services', 'appointment', 'statuses'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Appointment  $appointment
-     * @return \Illuminate\Http\Response
+     * @param UpdateAppointmentRequest $request
+     * @param \App\Appointment $appointment
+     * @return void
      */
-    public function update(Request $request, Appointment $appointment)
+    public function update(UpdateAppointmentRequest $request, Appointment $appointment)
     {
-        //
+        $appointment->update($request->all());
+        $appointment->services()->sync($request->input('services', []));
+
+        return redirect()->route('employee.appointments.index');
     }
 
     /**

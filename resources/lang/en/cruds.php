@@ -121,6 +121,8 @@ return [
             'user_id_helper'           => '',
             'department'               => 'Department',
             'department_helper'        => '',
+            'status'                   => 'Status',
+            'status_id'                => '',
             'email_verified_at'        => 'Email verified at',
             'email_verified_at_helper' => '',
             'password'                 => 'Password',
