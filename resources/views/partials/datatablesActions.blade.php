@@ -1,10 +1,23 @@
 @can($viewGate)
-    <a class="btn btn-xs btn-primary" href="{{ route('admin.' . $crudRoutePart . '.show', $row->id) }}">
+    <a class="btn btn-xs btn-primary"
+       @if(auth()->user()->is_admin)
+            href="{{ route('admin.' . $crudRoutePart . '.show', $row->id) }}"
+       @else
+            href="{{ route('employee.' . $crudRoutePart . '.show', $row->id) }}"
+       @endif
+    >
         {{ trans('global.view') }}
     </a>
 @endcan
+
 @can($editGate)
-    <a class="btn btn-xs btn-info" href="{{ route('admin.' . $crudRoutePart . '.edit', $row->id) }}">
+    <a class="btn btn-xs btn-info"
+       @if(auth()->user()->is_admin)
+            href="{{ route('admin.' . $crudRoutePart . '.edit', $row->id) }}"
+       @else
+            href="{{ route('employee.' . $crudRoutePart . '.edit', $row->id) }}"
+       @endif
+       >
         {{ trans('global.edit') }}
     </a>
 @endcan

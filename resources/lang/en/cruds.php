@@ -93,6 +93,8 @@ return [
             'id_helper'         => '',
             'name'              => 'Name',
             'name_helper'       => '',
+            'color'             => 'Color',
+            'color_helper'      => '',
             'short_code'        => 'Short Code',
             'short_code_helper' => '',
             'created_at'        => 'Created at',

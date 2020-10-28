@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\AppointmentOverlap;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 use Gate;
@@ -33,13 +34,19 @@ class StoreAppointmentRequest extends FormRequest
                 'required',
                 'string',
             ],
+            'employee_id'   => [
+                'required',
+                'integer',
+            ],
             'start_time'  => [
                 'required',
                 'date_format:' . config('panel.date_format') . ' ' . config('panel.time_format'),
+                new AppointmentOverlap(),
             ],
             'finish_time' => [
                 'required',
                 'date_format:' . config('panel.date_format') . ' ' . config('panel.time_format'),
+                new AppointmentOverlap(),
             ],
             'services.*'  => [
                 'integer',

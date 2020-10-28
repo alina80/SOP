@@ -20,6 +20,7 @@ class Status extends Model
 
     protected $fillable = [
         'title',
+        'color',
         'created_at',
         'updated_at',
         'deleted_at',

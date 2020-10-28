@@ -27,6 +27,14 @@
                             {{ $status->title }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.status.fields.color') }}
+                        </th>
+                        <td style="background-color: {{ $status->color }}">
+                            {{ $status->color }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
 

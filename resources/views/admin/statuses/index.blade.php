@@ -29,6 +29,9 @@
                             {{ trans('cruds.status.fields.name') }}
                         </th>
                         <th>
+                            {{ trans('cruds.status.fields.color') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -44,6 +47,9 @@
                             </td>
                             <td>
                                 {{ $status->title ?? '' }}
+                            </td>
+                            <td style="background-color: {{ $status->color }}">
+                                {{ $status->color ?? '' }}
                             </td>
                             <td>
                                 @can('status_show')

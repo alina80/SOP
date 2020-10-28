@@ -10,11 +10,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
-use Laravel\Passport\HasApiTokens;
+
 
 class User extends Authenticatable
 {
-    use SoftDeletes, Notifiable, HasApiTokens;
+    use SoftDeletes, Notifiable;
 
     public $table = 'users';
 
@@ -86,5 +86,10 @@ class User extends Authenticatable
     public function employees()
     {
         return $this->hasMany(Employee::class);
+    }
+
+    public function getEmployeeId()
+    {
+        return Employee::with('user')->where('user_id',auth()->user()->id)->first()->id;
     }
 }
