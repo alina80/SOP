@@ -27,7 +27,7 @@
                 <label for="employee">{{ trans('cruds.appointment.fields.employee') }}</label>
                 <select name="employee_id" id="employee" class="form-control select2">
                     @foreach($employees as $id => $employee)
-                        <option value="{{ $id }}">{{ $employee }}</option>
+                        <option value="{{ $id }}" {{ (isset($appointment) && $appointment->employee ? $appointment->employee->id : old('employee_id')) == $id ? 'selected' : '' }}>{{ $employee }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('employee_id'))

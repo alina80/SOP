@@ -21,7 +21,7 @@
     @parent
     <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js'></script>
-    <script src='fullcalendar/locale/ro.js'></script>
+    <script src="{{ asset('assets/fullcalendar/locale/ro.js') }}"></script>
     <script>
         $(document).ready(function () {
             // page is now ready, initialize the calendar...
@@ -33,20 +33,19 @@
                     center: '',
                     right:  'today agendaDay,agendaWeek,month,year prev,next'
                 },
+                locale: 'ro',
                 events: events,
-                defaultView: 'agendaWeek',
+                forceEventDuration: true,
+                navLinks: true,
                 businessHours: {
-                    // days of week. an array of zero-based day of week integers (0=Sunday)
-                    dow: [ 1, 2, 3, 4, 5, 6 ], // Monday - Thursday
-
-                    start: '09:00', // a start time (10am in this example)
-                    end: '20:00', // an end time (6pm in this example)
+                    dow: [ 0, 1, 2, 3, 4, 5, 6 ],
+                    start: '09:00',
+                    end: '20:00',
                 },
                 eventColor: events['color'],
                 slotDuration: '00:15:00',
-                end: events['finish'],
-                locale: 'ro',
-            })
-        })
+            });
+
+        });
     </script>
 @stop

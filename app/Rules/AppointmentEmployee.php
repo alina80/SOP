@@ -4,9 +4,8 @@ namespace App\Rules;
 
 use App\Appointment;
 use Illuminate\Contracts\Validation\Rule;
-use Illuminate\Http\Request;
 
-class AppointmentOverlap implements Rule
+class AppointmentEmployee implements Rule
 {
     /**
      * Create a new rule instance.
@@ -27,12 +26,7 @@ class AppointmentOverlap implements Rule
      */
     public function passes($attribute, $value)
     {
-        $employeeId = (new Request)->query('employee_id');
-
-        if ($employeeId != Appointment::where('employee_id',$value)){
-            $response = Appointment::where('start_time', '<', $value)->where('finish_time','>', $value)->count() == 0;
-        }
-        return $response;
+        return Appointment::where('employee_id', $value)->count() == 0;
     }
 
     /**
@@ -42,6 +36,6 @@ class AppointmentOverlap implements Rule
      */
     public function message()
     {
-        return 'Appointment time overlaps with existing appointment(s) !';
+        return 'The validation error message.';
     }
 }

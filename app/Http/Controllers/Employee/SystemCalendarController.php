@@ -28,6 +28,7 @@ class SystemCalendarController extends Controller
                     'start' => $appointment->start_time,
                     'finish' => $appointment->finish_time,
                     'color' => $appointment->status->color,
+                    'end' => $appointment->finish_time,
                     'url'   => route('employee.appointments.edit', $appointment->id),
                 ];
             }

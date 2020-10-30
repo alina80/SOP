@@ -12,6 +12,7 @@ use App\Service;
 use App\Status;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -113,6 +114,7 @@ class AppointmentsController extends Controller
     public function store(StoreAppointmentRequest $request)
     {
         $appointment = Appointment::create($request->all());
+
         $appointment->services()->sync($request->input('services', []));
 
         return redirect()->route('admin.appointments.index');
@@ -145,7 +147,7 @@ class AppointmentsController extends Controller
 
         $statuses = Status::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $employees = Employee::all()->pluck('user_id', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $employees = Employee::all()->pluck('user.name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $services = Service::all()->pluck('title', 'id');
 
