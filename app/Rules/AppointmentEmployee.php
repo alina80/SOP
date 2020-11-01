@@ -26,7 +26,7 @@ class AppointmentEmployee implements Rule
      */
     public function passes($attribute, $value)
     {
-        return Appointment::where('employee_id', $value)->count() == 0;
+        return Appointment::where('employee_id','==', $value)->count() == 0;
     }
 
     /**

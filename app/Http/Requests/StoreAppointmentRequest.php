@@ -20,7 +20,7 @@ class StoreAppointmentRequest extends FormRequest
     public function authorize()
     {
         abort_if(Gate::denies('appointment_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
+echo 'from store appoin';
         print_r($_POST);
         return true;
     }
@@ -40,6 +40,7 @@ class StoreAppointmentRequest extends FormRequest
             'employee_id'   => [
                 'required',
                 'integer',
+                new AppointmentEmployee(),
             ],
             'start_time'  => [
                 'required',

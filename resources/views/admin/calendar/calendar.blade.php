@@ -44,6 +44,7 @@
                 eventColor: events['color'],
                 slotDuration: '00:15:00',
                 selectable: true,
+                eventLimit: true,
 
             });
 
