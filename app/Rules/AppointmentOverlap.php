@@ -27,13 +27,9 @@ class AppointmentOverlap implements Rule
      */
     public function passes($attribute, $value)
     {
-        $employeeId = $_POST['employee_id'];
-
-//        if ($employeeId != Appointment::where('employee_id','==', $value)){
-//            $response = Appointment::where('start_time', '<', $value)->where('finish_time','>', $value)->where('employee_id','<>',$employeeId)->count() == 0;
-//        }
-        $response = Appointment::where('start_time', '<', $value)->where('finish_time','>', $value)->where('employee_id','<>',$employeeId)->count() == 0;
-        return $response;
+       return Appointment::where('employee_id','==',$value)->where(function ($query) use ($value) {
+           $query->where('start_time','<',$value)->where('finish_time','>',$value);
+           })->count() == 0;
     }
 
     /**

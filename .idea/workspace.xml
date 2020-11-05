@@ -20,25 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8411b4cf-5ae3-4d97-83cd-0992caf4bc7e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/lang/ro.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/ro/auth.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/ro/cruds.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/ro/global.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/ro/pagination.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/ro/passwords.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/ro/validation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/SOP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SOP.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreAppointmentRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreAppointmentRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Rules/AppointmentEmployee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Rules/AppointmentEmployee.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Rules/AppointmentOverlap.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Rules/AppointmentOverlap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/panel.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/panel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/calendar/calendar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/calendar/calendar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +155,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/lang/ro" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Laravel-School-Timetable-Calendar" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -201,6 +187,8 @@
       <workItem from="1603434720655" duration="30136000" />
       <workItem from="1603782706817" duration="84490000" />
       <workItem from="1604138076043" duration="2053000" />
+      <workItem from="1604206112281" duration="10376000" />
+      <workItem from="1604379973013" duration="6089000" />
     </task>
     <servers />
   </component>
@@ -243,10 +231,14 @@
       <screen x="55" y="27" width="1311" height="741" />
     </state>
     <state x="155" y="125" width="1111" height="543" key="DiffContextDialog/55.27.1311.741@55.27.1311.741" timestamp="1604071051058" />
-    <state x="493" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1603980390257">
+    <state x="493" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1604393013255">
       <screen x="55" y="27" width="1311" height="741" />
     </state>
-    <state x="493" y="154" width="424" height="484" key="FileChooserDialogImpl/55.27.1311.741@55.27.1311.741" timestamp="1603980390257" />
+    <state x="493" y="154" width="424" height="484" key="FileChooserDialogImpl/55.27.1311.741@55.27.1311.741" timestamp="1604393013255" />
+    <state x="293" y="142" width="824" height="508" key="IDE.errors.dialog" timestamp="1604299168327">
+      <screen x="55" y="27" width="1311" height="741" />
+    </state>
+    <state x="293" y="142" width="824" height="508" key="IDE.errors.dialog/55.27.1311.741@55.27.1311.741" timestamp="1604299168327" />
     <state x="199" y="31" key="SettingsEditor" timestamp="1603510557621">
       <screen x="55" y="27" width="1311" height="741" />
     </state>

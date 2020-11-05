@@ -24,7 +24,7 @@
     <script>
         $(document).ready(function () {
             // page is now ready, initialize the calendar...
-            events ={!! json_encode($events) !!};
+            let events ={!! json_encode($events) !!};
             $('#calendar').fullCalendar({
                 // put your options and callbacks here
                 header: {
@@ -32,7 +32,7 @@
                     center: '',
                     right:  'today agendaDay,agendaWeek,month,year prev,next'
                 },
-                locale: 'ro',
+                locale: '{{ app()->getLocale() }}',
                 events: events,
                 forceEventDuration: true,
                 navLinks: true,

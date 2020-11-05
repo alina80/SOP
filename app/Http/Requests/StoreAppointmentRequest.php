@@ -2,12 +2,11 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\AppointmentEmployee;
-use App\Rules\AppointmentOverlapFinish;
 use App\Rules\AppointmentOverlap;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 use Gate;
+
 use App\Appointment;
 
 class StoreAppointmentRequest extends FormRequest
@@ -20,8 +19,7 @@ class StoreAppointmentRequest extends FormRequest
     public function authorize()
     {
         abort_if(Gate::denies('appointment_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-echo 'from store appoin';
-        print_r($_POST);
+
         return true;
     }
 
@@ -40,7 +38,7 @@ echo 'from store appoin';
             'employee_id'   => [
                 'required',
                 'integer',
-                new AppointmentEmployee(),
+                new AppointmentOverlap(),
             ],
             'start_time'  => [
                 'required',
