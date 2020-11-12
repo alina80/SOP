@@ -21,72 +21,74 @@ class AppointmentsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param Request $request
      * @return \Illuminate\Http\Response
-     * @throws \Exception
      */
-    public function index(Request $request)
+    public function index()
     {
-        if ($request->ajax()) {
-            $query = Appointment::with(['employee', 'services','status'])->select(sprintf('%s.*', (new Appointment)->table));
-            $table = Datatables::of($query);
+//        if ($request->ajax()) {
+//            $query = Appointment::with(['employee', 'services','status'])->select(sprintf('%s.*', (new Appointment)->table));
+//            $table = Datatables::of($query);
+//
+//            $table->addColumn('placeholder', '&nbsp;');
+//            $table->addColumn('actions', '&nbsp;');
+//
+//            $table->editColumn('actions', function ($row) {
+//                $viewGate      = 'appointment_show';
+//                $editGate      = 'appointment_edit';
+//                $deleteGate    = 'appointment_delete';
+//                $crudRoutePart = 'appointments';
+//
+//                return view('partials.datatablesActions', compact(
+//                    'viewGate',
+//                    'editGate',
+//                    'deleteGate',
+//                    'crudRoutePart',
+//                    'row'
+//                ));
+//            });
+//
+//            $table->editColumn('id', function ($row) {
+//                return $row->id ? $row->id : "";
+//            });
+//            $table->addColumn('client', function ($row) {
+//                return $row->client ? $row->client : '';
+//            });
+//
+//            $table->addColumn('employee_id', function ($row) {
+//                return $row->employee ? $row->employee->user->name : '';
+//            });
+//
+//            $table->editColumn('price', function ($row) {
+//                return $row->price ? $row->price : "";
+//            });
+//
+//            $table->editColumn('comments', function ($row) {
+//                return $row->comments ? $row->comments : "";
+//            });
+//
+//            $table->editColumn('services', function ($row) {
+//                $labels = [];
+//
+//                foreach ($row->services as $service) {
+//                    $labels[] = sprintf('<span class="label label-info label-many">%s</span>', $service->title);
+//                }
+//
+//                return implode(', ', $labels);
+//            });
+//
+//            $table->addColumn('status', function ($row) {
+//                return $row->status ? $row->status->title : '';
+//            });
+//
+//            $table->rawColumns(['actions', 'placeholder', 'status', 'employee', 'services']);
+//
+//            return $table->make(true);
 
-            $table->addColumn('placeholder', '&nbsp;');
-            $table->addColumn('actions', '&nbsp;');
+        abort_if(Gate::denies('appointment_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-            $table->editColumn('actions', function ($row) {
-                $viewGate      = 'appointment_show';
-                $editGate      = 'appointment_edit';
-                $deleteGate    = 'appointment_delete';
-                $crudRoutePart = 'appointments';
+        $appointments = Appointment::all();
 
-                return view('partials.datatablesActions', compact(
-                    'viewGate',
-                    'editGate',
-                    'deleteGate',
-                    'crudRoutePart',
-                    'row'
-                ));
-            });
-
-            $table->editColumn('id', function ($row) {
-                return $row->id ? $row->id : "";
-            });
-            $table->addColumn('client', function ($row) {
-                return $row->client ? $row->client : '';
-            });
-
-            $table->addColumn('employee_id', function ($row) {
-                return $row->employee ? $row->employee->user->name : '';
-            });
-
-            $table->editColumn('price', function ($row) {
-                return $row->price ? $row->price : "";
-            });
-            $table->editColumn('comments', function ($row) {
-                return $row->comments ? $row->comments : "";
-            });
-
-            $table->editColumn('services', function ($row) {
-                $labels = [];
-
-                foreach ($row->services as $service) {
-                    $labels[] = sprintf('<span class="label label-info label-many">%s</span>', $service->title);
-                }
-
-                return implode(', ', $labels);
-            });
-
-            $table->addColumn('status', function ($row) {
-                return $row->status ? $row->status->title : '';
-            });
-
-            $table->rawColumns(['actions', 'placeholder', 'status', 'employee', 'services']);
-
-            return $table->make(true);
-        }
-
-        return view('admin.appointments.index');
+        return view('admin.appointments.index', compact('appointments'));
     }
 
     /**

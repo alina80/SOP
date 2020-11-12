@@ -15,8 +15,9 @@
     </div>
 
     <div class="card-body">
-        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Appointment">
-            <thead>
+        <div class="table-responsive">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-Appointment">
+                <thead>
                 <tr>
                     <th width="10">
 
@@ -37,14 +38,15 @@
                         {{ trans('cruds.appointment.fields.finish_time') }}
                     </th>
                     <th>
+                        {{ trans('cruds.appointment.fields.services') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.appointment.fields.price') }}
                     </th>
                     <th>
                         {{ trans('cruds.appointment.fields.comments') }}
                     </th>
-                    <th>
-                        {{ trans('cruds.appointment.fields.services') }}
-                    </th>
+
                     <th>
                         {{ trans('cruds.appointment.fields.status') }}
                     </th>
@@ -52,10 +54,70 @@
                         &nbsp;
                     </th>
                 </tr>
-            </thead>
-        </table>
+                </thead>
+                <tbody>
+                @foreach($appointments as $key => $appointment)
+                    <tr data-entry-id="{{ $appointment->id }}">
+                        <td>
 
+                        </td>
+                        <td>
+                            {{ $appointment->id ?? '' }}
+                        </td>
+                        <td>
+                            {{ $appointment->client ?? '' }}
+                        </td>
+                        <td>
+                            {{ $appointment->employee->getUserName() ?? '' }}
+                        </td>
+                        <td>
+                            {{ $appointment->start_time ?? '' }}
+                        </td>
+                        <td>
+                            {{ $appointment->finish_time ?? '' }}
+                        </td>
+                        <td>
+                            @foreach($appointment->services as $key => $item)
+                                <span class="badge badge-info">{{ $item->title }}</span>
+                            @endforeach
+                        </td>
+                        <td>
+                            {{ $appointment->price }}
+                        </td>
+                        <td>
+                            {{ $appointment->comments }}
+                        </td>
+                        <td>
 
+                            <span class="badge badge-info">{{ $appointment->status->title }}</span>
+
+                        </td>
+                        <td>
+                            @can('appointment_show')
+                                <a class="btn btn-xs btn-primary" href="{{ route('admin.appointments.show', $appointment->id) }}">
+                                    {{ trans('global.view') }}
+                                </a>
+                            @endcan
+
+                            @can('appointment_edit')
+                                <a class="btn btn-xs btn-info" href="{{ route('admin.appointments.edit', $appointment->id) }}">
+                                    {{ trans('global.edit') }}
+                                </a>
+                            @endcan
+
+                            @can('appointment_delete')
+                                <form action="{{ route('admin.appointments.destroy', $appointment->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                </form>
+                            @endcan
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 @endsection
@@ -63,66 +125,49 @@
 @parent
 <script>
     $(function () {
-  let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('appointment_delete')
-  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
-  let deleteButton = {
-    text: deleteButtonTrans,
-    url: "{{ route('admin.appointments.massDestroy') }}",
-    className: 'btn-danger',
-    action: function (e, dt, node, config) {
-      var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
-          return entry.id
-      });
+        let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
+        @can('appointment_delete')
+        let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
+        let deleteButton = {
+            text: deleteButtonTrans,
+            url: "{{ route('admin.appointments.massDestroy') }}",
+            className: 'btn-danger',
+            action: function (e, dt, node, config) {
+                var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
+                    return $(entry).data('entry-id')
+                });
 
-      if (ids.length === 0) {
-        alert('{{ trans('global.datatables.zero_selected') }}')
+                if (ids.length === 0) {
+                    alert('{{ trans('global.datatables.zero_selected') }}')
 
-        return
-      }
+                    return
+                }
 
-      if (confirm('{{ trans('global.areYouSure') }}')) {
-        $.ajax({
-          headers: {'x-csrf-token': _token},
-          method: 'POST',
-          url: config.url,
-          data: { ids: ids, _method: 'DELETE' }})
-          .done(function () { location.reload() })
-      }
-    }
-  }
-  dtButtons.push(deleteButton)
-@endcan
+                if (confirm('{{ trans('global.areYouSure') }}')) {
+                    $.ajax({
+                        headers: {'x-csrf-token': _token},
+                        method: 'POST',
+                        url: config.url,
+                        data: { ids: ids, _method: 'DELETE' }})
+                        .done(function () { location.reload() })
+                }
+            }
+        }
+        dtButtons.push(deleteButton)
+        @endcan
 
-  let dtOverrideGlobals = {
-    buttons: dtButtons,
-    processing: true,
-    serverSide: true,
-    retrieve: true,
-    aaSorting: [],
-    ajax: "{{ route('admin.appointments.index') }}",
-    columns: [
-        { data: 'placeholder', name: 'placeholder' },
-        { data: 'id', name: 'id' },
-        { data: 'client', name: 'client' },
-        { data: 'employee_id', name: 'employee.user_id.name' },
-        { data: 'start_time', name: 'start_time' },
-        { data: 'finish_time', name: 'finish_time' },
-        { data: 'price', name: 'price' },
-        { data: 'comments', name: 'comments' },
-        { data: 'services', name: 'services.title' },
-        { data: 'status', name: 'status.title' },
-        { data: 'actions', name: '{{ trans('global.actions') }}' }
-    ],
-    order: [[ 1, 'desc' ]],
-    pageLength: 100,
-  };
-  $('.datatable-Appointment').DataTable(dtOverrideGlobals);
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
-        $($.fn.dataTable.tables(true)).DataTable()
-            .columns.adjust();
-    });
-});
+        $.extend(true, $.fn.dataTable.defaults, {
+            orderCellsTop: true,
+            order: [[ 1, 'desc' ]],
+            pageLength: 100,
+        });
+        let table = $('.datatable-Appointment:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
+            $($.fn.dataTable.tables(true)).DataTable()
+                .columns.adjust();
+        });
+
+    })
 
 </script>
 @endsection

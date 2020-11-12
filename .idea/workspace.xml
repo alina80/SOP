@@ -20,11 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8411b4cf-5ae3-4d97-83cd-0992caf4bc7e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreAppointmentRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreAppointmentRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Rules/AppointmentOverlap.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Rules/AppointmentOverlap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/calendar/calendar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/calendar/calendar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AppointmentsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AppointmentsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/appointments/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/appointments/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/appointments/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/appointments/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +46,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.4">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/league/mime-type-detection" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
@@ -153,9 +154,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Laravel-School-Timetable-Calendar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Customer-Service-Office" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -189,6 +192,7 @@
       <workItem from="1604138076043" duration="2053000" />
       <workItem from="1604206112281" duration="10376000" />
       <workItem from="1604379973013" duration="6089000" />
+      <workItem from="1604588057918" duration="2861000" />
     </task>
     <servers />
   </component>
@@ -211,10 +215,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="293" y="54" width="824" height="684" key="#CLI_Interpreters" timestamp="1603510549172">
+    <state x="293" y="54" width="824" height="684" key="#CLI_Interpreters" timestamp="1604634649989">
       <screen x="55" y="27" width="1311" height="741" />
     </state>
-    <state x="293" y="54" width="824" height="684" key="#CLI_Interpreters/55.27.1311.741@55.27.1311.741" timestamp="1603510549172" />
+    <state x="293" y="54" width="824" height="684" key="#CLI_Interpreters/55.27.1311.741@55.27.1311.741" timestamp="1604634649989" />
     <state x="352" y="166" width="706" height="460" key="#Log_Highlighting_(ideolog)" timestamp="1604041858370">
       <screen x="55" y="27" width="1311" height="741" />
     </state>
@@ -231,17 +235,17 @@
       <screen x="55" y="27" width="1311" height="741" />
     </state>
     <state x="155" y="125" width="1111" height="543" key="DiffContextDialog/55.27.1311.741@55.27.1311.741" timestamp="1604071051058" />
-    <state x="493" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1604393013255">
+    <state x="493" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1604643814940">
       <screen x="55" y="27" width="1311" height="741" />
     </state>
-    <state x="493" y="154" width="424" height="484" key="FileChooserDialogImpl/55.27.1311.741@55.27.1311.741" timestamp="1604393013255" />
+    <state x="493" y="154" width="424" height="484" key="FileChooserDialogImpl/55.27.1311.741@55.27.1311.741" timestamp="1604643814940" />
     <state x="293" y="142" width="824" height="508" key="IDE.errors.dialog" timestamp="1604299168327">
       <screen x="55" y="27" width="1311" height="741" />
     </state>
     <state x="293" y="142" width="824" height="508" key="IDE.errors.dialog/55.27.1311.741@55.27.1311.741" timestamp="1604299168327" />
-    <state x="199" y="31" key="SettingsEditor" timestamp="1603510557621">
+    <state x="199" y="31" key="SettingsEditor" timestamp="1604634658117">
       <screen x="55" y="27" width="1311" height="741" />
     </state>
-    <state x="199" y="31" key="SettingsEditor/55.27.1311.741@55.27.1311.741" timestamp="1603510557621" />
+    <state x="199" y="31" key="SettingsEditor/55.27.1311.741@55.27.1311.741" timestamp="1604634658117" />
   </component>
 </project>
